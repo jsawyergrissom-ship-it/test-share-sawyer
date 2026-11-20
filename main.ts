@@ -1,3 +1,17 @@
+namespace SpriteKind {
+    export const mouse = SpriteKind.create()
+}
+sprites.onOverlap(SpriteKind.mouse, SpriteKind.Player, function (sprite, otherSprite) {
+    if (browserEvents.MouseLeft.isPressed()) {
+        pause(500)
+        browserEvents.MouseLeft.pauseUntil(browserEvents.MouseButtonEvent.Pressed)
+        otherSprite.setPosition(0, 0)
+    }
+})
+browserEvents.onMouseMove(function (x, y) {
+    pointer.setPosition(x, y)
+})
+let pointer: Sprite = null
 scene.setBackgroundImage(img`
     fffffffffffffff222222222222222fffffffffffffff222222222222222fffffffffffffff222222222222222fffffffffffffff222222222222222eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
     fffffffffffffff222222222222222fffffffffffffff222222222222222fffffffffffffff222222222222222fffffffffffffff222222222222222eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
@@ -120,3 +134,37 @@ scene.setBackgroundImage(img`
     222222222222222fffffffffffffff222222222222222fffffffffffffff222222222222222fffffffffffffff222222222222222fffffffffffffffeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
     222222222222222fffffffffffffff222222222222222fffffffffffffff222222222222222fffffffffffffff222222222222222fffffffffffffffeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
     `)
+pointer = sprites.create(img`
+    . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . 
+    . . . . . . . 1 . . . . . . . 
+    . . . . . . . 1 . . . . . . . 
+    . . . . . 1 1 . 1 1 . . . . . 
+    . . . . . . . 1 . . . . . . . 
+    . . . . . . . 1 . . . . . . . 
+    . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . 
+    `, SpriteKind.mouse)
+let testpiece241 = sprites.create(img`
+    . . . . 4 4 4 4 4 4 4 . . . . 
+    . . 4 4 4 4 4 4 4 4 4 4 4 . . 
+    . 4 4 4 4 4 4 4 4 4 4 4 4 4 . 
+    . 4 4 4 4 4 4 4 4 4 4 4 4 4 . 
+    4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+    4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+    4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+    4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+    4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+    4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+    4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+    . 4 4 4 4 4 4 4 4 4 4 4 4 4 . 
+    . 4 4 4 4 4 4 4 4 4 4 4 4 4 . 
+    . . 4 4 4 4 4 4 4 4 4 4 4 . . 
+    . . . . 4 4 4 4 4 4 4 . . . . 
+    `, SpriteKind.Player)
