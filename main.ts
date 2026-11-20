@@ -120,19 +120,3 @@ scene.setBackgroundImage(img`
     222222222222222fffffffffffffff222222222222222fffffffffffffff222222222222222fffffffffffffff222222222222222fffffffffffffffeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
     222222222222222fffffffffffffff222222222222222fffffffffffffff222222222222222fffffffffffffff222222222222222fffffffffffffffeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
     `)
-let black = sprites.create(img`
-    . . . 8 8 8 8 8 8 8 8 . . . 
-    . . 8 8 8 8 8 8 8 8 8 8 . . 
-    . 8 8 8 8 8 8 8 8 8 8 8 8 . 
-    8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-    8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-    8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-    8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-    8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-    8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-    8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-    8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-    . 8 8 8 8 8 8 8 8 8 8 8 8 . 
-    . . 8 8 8 8 8 8 8 8 8 8 . . 
-    . . . 8 8 8 8 8 8 8 8 . . . 
-    `, SpriteKind.Player)
