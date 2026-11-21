@@ -5,7 +5,8 @@ sprites.onOverlap(SpriteKind.mouse, SpriteKind.Player, function (sprite, otherSp
     if (browserEvents.MouseLeft.isPressed()) {
         pause(500)
         browserEvents.MouseLeft.pauseUntil(browserEvents.MouseButtonEvent.Pressed)
-        otherSprite.setPosition(0, 0)
+        otherSprite.setPosition(pointer.x - pointer.x % 15 + 7, pointer.y - pointer.y % 15 + 7)
+        pause(500)
     }
 })
 browserEvents.onMouseMove(function (x, y) {
@@ -152,19 +153,19 @@ pointer = sprites.create(img`
     . . . . . . . . . . . . . . . 
     `, SpriteKind.mouse)
 let testpiece241 = sprites.create(img`
-    . . . . 4 4 4 4 4 4 4 . . . . 
-    . . 4 4 4 4 4 4 4 4 4 4 4 . . 
-    . 4 4 4 4 4 4 4 4 4 4 4 4 4 . 
-    . 4 4 4 4 4 4 4 4 4 4 4 4 4 . 
-    4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-    4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-    4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-    4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-    4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-    4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-    4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-    . 4 4 4 4 4 4 4 4 4 4 4 4 4 . 
-    . 4 4 4 4 4 4 4 4 4 4 4 4 4 . 
-    . . 4 4 4 4 4 4 4 4 4 4 4 . . 
-    . . . . 4 4 4 4 4 4 4 . . . . 
+    . . . . . . . . . . . . . . . 
+    . . . . . 4 4 4 4 4 4 . . . . 
+    . . . 4 4 4 4 4 4 4 4 4 4 . . 
+    . . 4 4 4 4 4 4 4 4 4 4 4 4 . 
+    . . 4 4 4 4 4 4 4 4 4 4 4 4 . 
+    . 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+    . 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+    . 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+    . 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+    . 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+    . 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+    . . 4 4 4 4 4 4 4 4 4 4 4 4 . 
+    . . 4 4 4 4 4 4 4 4 4 4 4 4 . 
+    . . . 4 4 4 4 4 4 4 4 4 4 . . 
+    . . . . . 4 4 4 4 4 4 . . . . 
     `, SpriteKind.Player)
