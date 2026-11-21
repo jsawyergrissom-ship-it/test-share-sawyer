@@ -2,16 +2,27 @@ namespace SpriteKind {
     export const mouse = SpriteKind.create()
 }
 sprites.onOverlap(SpriteKind.mouse, SpriteKind.Player, function (sprite, otherSprite) {
-    if (browserEvents.MouseLeft.isPressed()) {
+    if (browserEvents.MouseLeft.isPressed() && turn) {
         pause(500)
         browserEvents.MouseLeft.pauseUntil(browserEvents.MouseButtonEvent.Pressed)
-        otherSprite.setPosition(pointer.x - pointer.x % 15 + 7, pointer.y - pointer.y % 15 + 7)
+        easing.blockEaseTo(otherSprite, pointer.x - pointer.x % 15 + 8, pointer.y - pointer.y % 15 + 8, 500, easing.Mode.Linear)
         pause(500)
+        turn = !(turn)
     }
 })
 browserEvents.onMouseMove(function (x, y) {
     pointer.setPosition(x, y)
 })
+sprites.onOverlap(SpriteKind.mouse, SpriteKind.Enemy, function (sprite, otherSprite) {
+    if (browserEvents.MouseLeft.isPressed() && !(turn)) {
+        pause(500)
+        browserEvents.MouseLeft.pauseUntil(browserEvents.MouseButtonEvent.Pressed)
+        easing.blockEaseTo(otherSprite, pointer.x - pointer.x % 15 + 8, pointer.y - pointer.y % 15 + 8, 500, easing.Mode.Linear)
+        pause(500)
+        turn = !(turn)
+    }
+})
+let turn = false
 let pointer: Sprite = null
 scene.setBackgroundImage(img`
     fffffffffffffff222222222222222fffffffffffffff222222222222222fffffffffffffff222222222222222fffffffffffffff222222222222222eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
@@ -135,6 +146,40 @@ scene.setBackgroundImage(img`
     222222222222222fffffffffffffff222222222222222fffffffffffffff222222222222222fffffffffffffff222222222222222fffffffffffffffeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
     222222222222222fffffffffffffff222222222222222fffffffffffffff222222222222222fffffffffffffff222222222222222fffffffffffffffeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
     `)
+let testpiece241 = sprites.create(img`
+    . . . . 3 3 3 3 3 3 3 . . . . 
+    . . 3 3 4 4 4 4 4 4 4 3 3 . . 
+    . 3 4 4 4 4 4 4 4 4 4 4 4 3 . 
+    . 3 4 4 4 4 4 4 4 4 4 4 4 3 . 
+    3 4 4 4 4 4 4 4 4 4 4 4 4 4 3 
+    3 4 4 4 4 4 4 4 4 4 4 4 4 4 3 
+    3 4 4 4 4 4 4 4 4 4 4 4 4 4 3 
+    3 4 4 4 4 4 4 4 4 4 4 4 4 4 3 
+    3 4 4 4 4 4 4 4 4 4 4 4 4 4 3 
+    3 4 4 4 4 4 4 4 4 4 4 4 4 4 3 
+    3 4 4 4 4 4 4 4 4 4 4 4 4 4 3 
+    . 3 4 4 4 4 4 4 4 4 4 4 4 3 . 
+    . 3 4 4 4 4 4 4 4 4 4 4 4 3 . 
+    . . 3 3 4 4 4 4 4 4 4 3 3 . . 
+    . . . . 3 3 3 3 3 3 3 . . . . 
+    `, SpriteKind.Player)
+let testpiece242 = sprites.create(img`
+    . . . . 6 6 6 6 6 6 6 . . . . 
+    . . 6 6 5 5 5 5 5 5 5 6 6 . . 
+    . 6 5 5 5 5 5 5 5 5 5 5 5 6 . 
+    . 6 5 5 5 5 5 5 5 5 5 5 5 6 . 
+    6 5 5 5 5 5 5 5 5 5 5 5 5 5 6 
+    6 5 5 5 5 5 5 5 5 5 5 5 5 5 6 
+    6 5 5 5 5 5 5 5 5 5 5 5 5 5 6 
+    6 5 5 5 5 5 5 5 5 5 5 5 5 5 6 
+    6 5 5 5 5 5 5 5 5 5 5 5 5 5 6 
+    6 5 5 5 5 5 5 5 5 5 5 5 5 5 6 
+    6 5 5 5 5 5 5 5 5 5 5 5 5 5 6 
+    . 6 5 5 5 5 5 5 5 5 5 5 5 6 . 
+    . 6 5 5 5 5 5 5 5 5 5 5 5 6 . 
+    . . 6 6 5 5 5 5 5 5 5 6 6 . . 
+    . . . . 6 6 6 6 6 6 6 . . . . 
+    `, SpriteKind.Enemy)
 pointer = sprites.create(img`
     . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . 
@@ -152,20 +197,3 @@ pointer = sprites.create(img`
     . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . 
     `, SpriteKind.mouse)
-let testpiece241 = sprites.create(img`
-    . . . . . . . . . . . . . . . 
-    . . . . . 4 4 4 4 4 4 . . . . 
-    . . . 4 4 4 4 4 4 4 4 4 4 . . 
-    . . 4 4 4 4 4 4 4 4 4 4 4 4 . 
-    . . 4 4 4 4 4 4 4 4 4 4 4 4 . 
-    . 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-    . 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-    . 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-    . 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-    . 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-    . 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-    . . 4 4 4 4 4 4 4 4 4 4 4 4 . 
-    . . 4 4 4 4 4 4 4 4 4 4 4 4 . 
-    . . . 4 4 4 4 4 4 4 4 4 4 . . 
-    . . . . . 4 4 4 4 4 4 . . . . 
-    `, SpriteKind.Player)
