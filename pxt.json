@@ -4,7 +4,8 @@
     "dependencies": {
         "device": "*",
         "browser-events": "*",
-        "Arcade Easing": "github:chimbrodapro/arcade-easing#d2068fdcc8ef0c2261a0cd70cc2c10efcd6a7712"
+        "Arcade Easing": "github:chimbrodapro/arcade-easing#d2068fdcc8ef0c2261a0cd70cc2c10efcd6a7712",
+        "arcade-text": "github:microsoft/arcade-text#v1.3.0"
     },
     "files": [
         "main.blocks",
