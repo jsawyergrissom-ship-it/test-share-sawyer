@@ -61,11 +61,6 @@ function createArray () {
     113
     ]
 }
-sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
-    if (Black_turn == true) {
-        sprites.destroy(otherSprite)
-    }
-})
 browserEvents.onMouseMove(function (x, y) {
     pointer.setPosition(x, y)
 })
@@ -122,11 +117,12 @@ sprites.onOverlap(SpriteKind.mouse, SpriteKind.Enemy, function (sprite, otherSpr
     movePiece(otherSprite, !(turn))
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    if (Black_turn == false) {
+    if (turn == true) {
         sprites.destroy(otherSprite)
+    } else {
+        sprites.destroy(sprite)
     }
 })
-let Black_turn = false
 let turn = false
 let pointer: Sprite = null
 let red: Sprite = null
