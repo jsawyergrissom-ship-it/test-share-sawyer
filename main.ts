@@ -76,8 +76,6 @@ function movePiece (piece: Sprite, redTurn: boolean) {
         if (browserEvents.MouseLeft.isPressed()) {
             easing.blockEaseTo(piece, pointer.x - pointer.x % 15 + 8, pointer.y - pointer.y % 15 + 8, 500, easing.Mode.Linear)
             pause(500)
-        } else {
-        	
         }
     }
     if (turn) {
@@ -136,6 +134,7 @@ let spriteY92: number[] = []
 let spriteX81: number[] = []
 let black: Sprite = null
 let miniPiece32: Sprite = null
+let index = 0
 scene.setBackgroundImage(img`
     fffffffffffffff222222222222222fffffffffffffff222222222222222fffffffffffffff222222222222222fffffffffffffff222222222222222eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
     fffffffffffffff222222222222222fffffffffffffff222222222222222fffffffffffffff222222222222222fffffffffffffff222222222222222eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
@@ -281,9 +280,8 @@ let turnFlag = textsprite.create("Turn:")
 turnFlag.setOutline(1, 15)
 turnFlag.setPosition(136, 10)
 createArray()
-let index = 0
-for (let index = 0; index <= 23; index++) {
-    if (index <= 11) {
+for (let index2 = 0; index2 <= 23; index2++) {
+    if (index2 <= 11) {
         black = sprites.create(img`
             . . . . 6 6 6 6 6 6 6 . . . . 
             . . 6 6 5 5 5 5 5 5 5 6 6 . . 
@@ -301,7 +299,7 @@ for (let index = 0; index <= 23; index++) {
             . . 6 6 5 5 5 5 5 5 5 6 6 . . 
             . . . . 6 6 6 6 6 6 6 . . . . 
             `, SpriteKind.Enemy)
-        black.setPosition(spriteX81[index], spriteY92[index])
+        black.setPosition(spriteX81[index2], spriteY92[index2])
     } else {
         red = sprites.create(img`
             . . . . 3 3 3 3 3 3 3 . . . . 
@@ -320,7 +318,7 @@ for (let index = 0; index <= 23; index++) {
             . . 3 3 4 4 4 4 4 4 4 3 3 . . 
             . . . . 3 3 3 3 3 3 3 . . . . 
             `, SpriteKind.Player)
-        red.setPosition(spriteX81[index], spriteY92[index])
+        red.setPosition(spriteX81[index2], spriteY92[index2])
     }
 }
 pointer = sprites.create(img`
