@@ -2,7 +2,7 @@ namespace SpriteKind {
     export const mouse = SpriteKind.create()
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    turn = !(turn)
+    Black_turn = !(Black_turn)
 })
 sprites.onOverlap(SpriteKind.mouse, SpriteKind.Player, function (sprite, otherSprite) {
     movePiece(otherSprite, turn)
@@ -61,6 +61,11 @@ function createArray () {
     113
     ]
 }
+sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
+    if (Black_turn == true) {
+        sprites.destroy(otherSprite)
+    }
+})
 browserEvents.onMouseMove(function (x, y) {
     pointer.setPosition(x, y)
 })
@@ -118,7 +123,13 @@ function movePiece (piece: Sprite, redTurn: boolean) {
 sprites.onOverlap(SpriteKind.mouse, SpriteKind.Enemy, function (sprite, otherSprite) {
     movePiece(otherSprite, !(turn))
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    if (Black_turn == false) {
+        sprites.destroy(otherSprite)
+    }
+})
 let turn = false
+let Black_turn = false
 let pointer: Sprite = null
 let red: Sprite = null
 let spriteY92: number[] = []
