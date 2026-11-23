@@ -2,7 +2,7 @@ namespace SpriteKind {
     export const mouse = SpriteKind.create()
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    Black_turn = !(Black_turn)
+    turn = !(turn)
 })
 sprites.onOverlap(SpriteKind.mouse, SpriteKind.Player, function (sprite, otherSprite) {
     movePiece(otherSprite, turn)
@@ -126,8 +126,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
         sprites.destroy(otherSprite)
     }
 })
-let turn = false
 let Black_turn = false
+let turn = false
 let pointer: Sprite = null
 let red: Sprite = null
 let spriteY92: number[] = []
